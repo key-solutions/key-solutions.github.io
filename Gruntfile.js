@@ -268,6 +268,15 @@ module.exports = function (grunt) {
       }
     },
 
+    'gh-pages':{
+      options:{
+        base:'dist',
+        branch: 'master',
+        repo: 'https://github.com/key-solutions/key-solutions.github.io.git',
+        message: 'Auto-generated commit'        
+      },
+      src:['**']
+    },
     // By default, your `index.html`'s <!-- Usemin block --> will take care
     // of minification. These next options are pre-configured if you do not
     // wish to use the Usemin blocks.
@@ -361,7 +370,7 @@ module.exports = function (grunt) {
     }
   });
 
-
+  grunt.loadNpmTasks('grunt-gh-pages');
   grunt.registerTask('serve', 'start the server and preview your app', function (target) {
 
     if (target === 'dist') {
@@ -411,7 +420,8 @@ module.exports = function (grunt) {
     'modernizr',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'gh-pages'
   ]);
 
   grunt.registerTask('default', [
